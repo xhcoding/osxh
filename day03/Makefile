@@ -21,11 +21,11 @@ img:
 	make xhos.img
 
 ipl10.bin: ipl10.nas
-	nasm ipl10.nas -f bin -o ipl10.bin -l ipl10.lst
+	$(NASK) ipl10.nas ipl10.bin  ipl10.lst
 
 
 asmhead.bin : asmhead.nas Makefile
-	nasm asmhead.nas -f bin -o asmhead.bin -l asmhead.lst
+	$(NASK) asmhead.nas  asmhead.bin  asmhead.lst
 
 bootpack.gas : bootpack.c Makefile
 	$(CC1) -o bootpack.gas bootpack.c
