@@ -44,6 +44,8 @@ void io_cli(void);
 void io_out8(int port, int data);
 int io_load_eflags(void);
 void io_store_eflags(int eflags);
+void load_gdtr(int limit, int addr);
+void load_idtr(int limit, int addr);
 
 void init_palette(void);
 void set_palette(int start, int end, const unsigned char* rgb);
@@ -256,13 +258,12 @@ void init_gdtidt(void) {
     }
     set_segmdesc(gdt + 1, 0xffffffff, 0x00000000, 0x4096);
     set_segmdesc(gdt + 2, 0x0007ffff, 0x00280000, 0x409a);
-    /* TODO:  load_gdtr*/
-
+    load_gdtr(0xffff, 0x00270000);
     // IDT的初始化
     for (i = 0; i < 256; ++i) {
 	set_gatedesc(idt + i, 0, 0, 0);
     }
-    /* TODO:  load_idt*/
+    load_idtr(0x7ff, 0x0026f800);
 
 }
 
