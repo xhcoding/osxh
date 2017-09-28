@@ -51,7 +51,7 @@ void HariMain(void) {
     sheet_updown(shtctl, sht_back, 0);
     sheet_updown(shtctl, sht_mouse, 1);
     sprintf(s, "memory %dMB free: %dKB ", memtotal / (1024 * 1024), memman_total(memman) / 1024); 
-    putfonts8_asc(binfo->vram, binfo->scrnx, 0, 32, COL8_FFFFFF, s);
+    putfonts8_asc((char *)buf_back, binfo->scrnx, 0, 32, COL8_FFFFFF, s);
     sheet_refresh(shtctl, sht_back, 0, 0, binfo->scrnx, 48);
     
     for(;;) {
