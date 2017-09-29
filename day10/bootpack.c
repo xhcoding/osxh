@@ -55,7 +55,7 @@ void HariMain(void) {
     sheet_refresh(shtctl, sht_back, 0, 0, binfo->scrnx, 48);
     
     for(;;) {
-	io_hlt();
+	io_cli();
 	int i;
 	if (fifo8_status(&keyfifo) + fifo8_status(&mousefifo) == 0) {
 	    io_stihlt();
